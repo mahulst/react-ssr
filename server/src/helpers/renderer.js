@@ -6,17 +6,22 @@ import {
   StaticRouter
 } from 'react-router-dom';
 import Routes from '../client/Routes';
-
-export default (req) => {
+import { Provider } from 'react-redux';
+import { renderRoutes } from 'react-router-config';
+export default (req, store) => {
   const content = renderToString(
-      <StaticRouter location={req.path} context={{}}>
-        <Routes />
-      </StaticRouter>
+      <Provider store={store}>
+        <StaticRouter location={req.path} context={{}}>
+          <div>{renderRoutes(Routes)}</div>
+        </StaticRouter>
+      </Provider>
   );
   const html =
     `
     <html>
-      <head></head>
+      <head>
+      <title>SSR</title>
+</head>
       <body>
         <div id="root">${content}</div>
         <script src="bundle.js"></script>
