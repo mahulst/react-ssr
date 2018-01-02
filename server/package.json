@@ -7,7 +7,8 @@
     "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:build-server": "webpack --config webpack.server.js --watch",
-    "dev:build-client": "webpack --config webpack.client.js --watch"
+    "dev:build-client": "webpack --config webpack.client.js --watch",
+    "prettier": "prettier --write 'src/**/*.js'"
   },
   "author": "",
   "license": "ISC",
@@ -42,5 +43,8 @@
     "webpack-dev-server": "2.8.2",
     "webpack-merge": "4.1.0",
     "webpack-node-externals": "1.6.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.9.2"
   }
 }

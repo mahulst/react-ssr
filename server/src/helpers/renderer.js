@@ -1,14 +1,10 @@
-import React from 'react';
-import {
-  renderToString
-} from 'react-dom/server';
-import {
-  StaticRouter
-} from 'react-router-dom';
-import Routes from '../client/Routes';
-import { Provider } from 'react-redux';
-import { renderRoutes } from 'react-router-config';
-import serialize from 'serialize-javascript';
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import Routes from "../client/Routes";
+import { Provider } from "react-redux";
+import { renderRoutes } from "react-router-config";
+import serialize from "serialize-javascript";
 
 export default (req, store) => {
   const content = renderToString(
@@ -18,8 +14,7 @@ export default (req, store) => {
       </StaticRouter>
     </Provider>
   );
-  const html =
-    `
+  const html = `
     <html>
       <head>
         <title>SSR</title>
@@ -35,4 +30,4 @@ export default (req, store) => {
   `;
 
   return html;
-}
+};

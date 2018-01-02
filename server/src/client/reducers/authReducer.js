@@ -1,6 +1,6 @@
-import { FETCH_CURRENT_USERS } from '../actions/index';
+import { FETCH_CURRENT_USERS } from "../actions/index";
 
-export default function (state = null, action) {
+export default function(state = null, action) {
   switch (action.type) {
     case FETCH_CURRENT_USERS:
       return action.payload.data || false;

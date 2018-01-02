@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/index';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchUsers } from "../actions/index";
 
 class UserListPage extends Component {
   componentDidMount() {
@@ -9,12 +9,12 @@ class UserListPage extends Component {
 
   renderUsers() {
     return this.props.users.map(user => {
-      return <li key={user.id}>{user.name}</li>
-    })
+      return <li key={user.id}>{user.name}</li>;
+    });
   }
 
   render() {
-    return(
+    return (
       <div>
         <div> Here is a list of users </div>
         <ul>{this.renderUsers()}</ul>
@@ -22,7 +22,6 @@ class UserListPage extends Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return { users: state.users };
