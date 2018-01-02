@@ -8,20 +8,21 @@ import {
 import Routes from '../client/Routes';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
+
 export default (req, store) => {
   const content = renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.path} context={{}}>
-          <div>{renderRoutes(Routes)}</div>
-        </StaticRouter>
-      </Provider>
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={{}}>
+        <div>{renderRoutes(Routes)}</div>
+      </StaticRouter>
+    </Provider>
   );
   const html =
     `
     <html>
       <head>
-      <title>SSR</title>
-</head>
+        <title>SSR</title>
+      </head>
       <body>
         <div id="root">${content}</div>
         <script src="bundle.js"></script>

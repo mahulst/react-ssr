@@ -29,7 +29,6 @@ function mapStateToProps(state) {
 }
 
 function loadData(store) {
-  console.log("I am loading data");
   return store.dispatch(fetchUsers());
 }
 
