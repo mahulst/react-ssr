@@ -13,8 +13,16 @@ app.get('*', (req, res) => {
 
   const components = matchRoutes(Routes, req.path);
 
-  const html = renderer(req, store);
-  res.send(html);
+  const promises = components.map(({ route }) => {
+      if (route.loadData) {
+        return route.loadData(store);
+      }
+  });
+
+  Promise.all(promises).then(() => {
+    const html = renderer(req, store);
+    res.send(html);
+  });
 });
 
 app.listen(3000, () => {
